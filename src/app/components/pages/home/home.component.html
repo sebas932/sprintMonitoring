@@ -1,14 +1,14 @@
 <h5>Open Milestones:</h5>
 <div class="row">
-  <div class="col s6 m4">
+  <div class="col s6 m4" *ngFor="let sprint of milestones">
     <div class="card ">
       <div class="card-content sprintCard">
-        <span class="card-title"> sprint.github.title </span>
-        <p>Due on:  sprint.github.due_on|date("M/d/Y") </p>
+        <span class="card-title">{{ sprint.title }}  </span>
+        <p>Due on:  {{ sprint.due_on }} </p>
       </div>
       <div class="card-action right-align">
-        <a href=" sprint.github.html_url " target="_blank">Github URL</a>
-        <a href=" sprint.report_url ">See Report</a>
+        <a href="{{ sprint.html_url }}" target="_blank">Github URL</a>
+        <a href="#">See Report</a>
       </div>
     </div>
   </div>
