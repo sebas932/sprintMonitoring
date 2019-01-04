@@ -1,1 +1,107 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  background-color: #fcfcfc;
+  padding: 0;
+  margin: 0;
+}
+
+header {
+  /* border-bottom: 1px solid #ccc; */
+  /* position: fixed; */
+}
+
+table td {
+  border: 1px solid #f0f0f0;
+}
+
+table#issuesList {
+  font-size: 0.85em;
+}
+
+.leftBar {
+  padding: 2em;
+  position: fixed;
+  width: 320px;
+}
+
+.rightBar {
+  padding: 1em;
+  margin-left: 320px;
+  border-left: 1px solid #ccc;
+  background-color: #fff;
+}
+
+.rightBar.hideblock {
+  margin-left: 0px;
+}
+
+.badge {
+  opacity: 0.9;
+  background: #f1f1f1;
+  border-radius: 0;
+  border-bottom: 2px solid;
+  margin-bottom: 2px;
+}
+
+.topIndicator {
+  height: 250px;
+}
+
+.topIndicator canvas {
+  position: relative;
+  height: 40vh;
+  width: 80vw;
+}
+
+/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
+nav {
+  background-color: #2196F3;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+p {
+  margin-bottom: 5px;
+}
+
+footer.page-footer {
+  background-color: #009688;
+}
+
+header {
+  background-color: #009688;
+  padding: 6px 0;
+  margin: 0;
+  color: #fff;
+}
+
+.chart-container {
+  position: relative;
+  height: 148px;
+}
+
+.sprintCard {
+  height: 165px;
+}
+
+.pipeline-In-Progress {
+  background-color: #f5ce34;
+  color: #fff;
+}
+
+.pipeline-Closed {
+  background-color: #27ae60;
+  color: #fff;
+}
+
+.pipeline-New-Issues {
+  background-color: #ef685a;
+  color: #fff;
+}
+
+.pipeline-Review-QA {
+  background-color: #5fa9da;
+  color: #fff;
+}
