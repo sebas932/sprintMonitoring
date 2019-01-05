@@ -1,0 +1,12 @@
+<div class="col s6 m4" >
+  <div class="card ">
+    <div class="card-content sprintCard">
+      <span class="card-title">{{ milestone.title }}  </span>
+      <p>Due on:  {{ milestone.due_on | date }} </p>
+    </div>
+    <div class="card-action right-align">
+      <a href="{{ milestone.html_url }}" target="_blank">Github URL</a>
+      <a href="#">See Report</a>
+    </div>
+  </div>
+</div>

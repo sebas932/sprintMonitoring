@@ -5,9 +5,12 @@ import { map, catchError, tap } from 'rxjs/operators';
 
 
 const endpoint = 'https://api.github.com/repos/CCAFS/MARLO/';
+
+
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'application/json'
+    'Content-Type':  'application/json',
+    'access_token':  ''
   })
 };
 
@@ -26,22 +29,9 @@ export class GithubService {
     console.log('Github Service ...');
   }
 
-  getMilestones(): Observable<any> {
-    return this.http.get(endpoint + 'milestones').pipe(
+  getMilestones(state:string= 'all'): Observable<any> {
+    return this.http.get(endpoint + 'milestones?state=' +state + '&per_page=100&direction=desc', { httpOptions }).pipe(
       map(this.extractData));
   }
 
-  private handleError<T> (operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
-      console.log(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
-  }
 }

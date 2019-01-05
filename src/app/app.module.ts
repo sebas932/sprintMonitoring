@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 // Services
-import { GithubService } from './services/github.service';
+// import { GithubService } from './services/github.service';
 
 //Components
 import { HeaderComponent } from './components/shared/header/header.component';
@@ -14,13 +14,17 @@ import { FooterComponent } from './components/shared/footer/footer.component';
 
 // Pages
 import { HomeComponent } from './components/pages/home/home.component';
+import { PageNotFoundComponent } from './components/pages/page-not-found/page-not-found.component';
+import { MilestoneCardComponent } from './components/shared/milestone-card/milestone-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    PageNotFoundComponent,
+    MilestoneCardComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +32,6 @@ import { HomeComponent } from './components/pages/home/home.component';
     HttpClientModule
   ],
   providers: [
-    GithubService
   ],
   bootstrap: [AppComponent]
 })

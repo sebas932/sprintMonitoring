@@ -9,19 +9,24 @@ import { GithubService } from './../../../services/github.service';
 })
 export class HomeComponent implements OnInit {
 
-  milestones:any = [];
+  openMilestones:any = [];
+  closedMilestones:any = [];
 
-  constructor( private _githubService: GithubService ) { }
+  constructor( private _githubService: GithubService ) {
+
+  }
 
   ngOnInit() {
     this.getMilestones();
   }
 
   getMilestones() {
-    this.milestones = [];
-    this._githubService.getMilestones().subscribe((data: {}) => {
-      console.log(data);
-      this.milestones = data;
+    this._githubService.getMilestones('open').subscribe((data: {}) => {
+      this.openMilestones = data;
+    });
+
+    this._githubService.getMilestones('closed').subscribe((data: {}) => {
+      this.closedMilestones = data;
     });
   }
 
