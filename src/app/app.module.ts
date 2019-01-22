@@ -16,6 +16,8 @@ import { FooterComponent } from './components/shared/footer/footer.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { PageNotFoundComponent } from './components/pages/page-not-found/page-not-found.component';
 import { MilestoneCardComponent } from './components/shared/milestone-card/milestone-card.component';
+import { LoadingComponent } from './components/shared/loading/loading.component';
+import { MilestonePageComponent } from './components/pages/milestone-page/milestone-page.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { MilestoneCardComponent } from './components/shared/milestone-card/miles
     FooterComponent,
     HomeComponent,
     PageNotFoundComponent,
-    MilestoneCardComponent
+    MilestoneCardComponent,
+    LoadingComponent,
+    MilestonePageComponent
   ],
   imports: [
     BrowserModule,

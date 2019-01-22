@@ -14,4 +14,8 @@ export class MilestoneCardComponent implements OnInit {
   ngOnInit() {
   }
 
+  gotoMilestone(milestoneID){
+    console.log(milestoneID);
+  }
+
 }

@@ -6,7 +6,7 @@
     </div>
     <div class="card-action right-align">
       <a href="{{ milestone.html_url }}" target="_blank">Github URL</a>
-      <a href="#">See Report</a>
+      <a [routerLink]="[ milestone.number ]" >See Report</a>
     </div>
   </div>
 </div>

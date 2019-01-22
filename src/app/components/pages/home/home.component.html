@@ -1,3 +1,5 @@
+<app-loading *ngIf="loading"></app-loading>
+
 <h5>Open Milestones:</h5>
 <div class="row">
   <app-milestone-card [milestone]="item" *ngFor="let item of openMilestones"></app-milestone-card>

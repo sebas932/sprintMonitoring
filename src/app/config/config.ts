@@ -1,5 +1,5 @@
-const CONFIG = {
+export const CONFIG = {
   github: {
-    access_token: '' 
+    access_token: ''
   }
-}
+};

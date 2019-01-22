@@ -2,15 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
+import { CONFIG } from '../config/config';
 
 
-const endpoint = 'https://api.github.com/repos/CCAFS/MARLO/';
+const endpoint = 'https://api.github.com/repos';
 
 
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
-    'access_token':  ''
+    'Authorization':  'token '+ CONFIG.github.access_token
   })
 };
 
@@ -29,8 +30,17 @@ export class GithubService {
     console.log('Github Service ...');
   }
 
-  getMilestones(state:string= 'all'): Observable<any> {
-    return this.http.get(endpoint + 'milestones?state=' +state + '&per_page=100&direction=desc', { httpOptions }).pipe(
+  getQuery(query:string){
+    return this.http.get(endpoint + '/' + query, httpOptions )
+  }
+
+  getMilestones(state:string= 'all', org:string, repo:string): Observable<any> {
+    return this.getQuery(org + '/' + repo +'/milestones?state=' +state + '&per_page=100&direction=desc').pipe(
+      map(this.extractData));
+  }
+
+  getMilestoneByID(milestoneID:number, org:string, repo:string){
+    return this.getQuery(org + '/' + repo +'/milestones/'+ milestoneID).pipe(
       map(this.extractData));
   }
 

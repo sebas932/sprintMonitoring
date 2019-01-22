@@ -1,0 +1,10 @@
+<div class="section">
+  <a routerLink="/{{org}}/{{repo}}" class="waves-effect waves-light btn-small"><i class="material-icons left">arrow_back</i>Go back</a>
+</div>
+
+<div class="section">
+  <h4> {{ milestone.title }}</h4>
+  <pre>
+    {{ milestone | json }}
+  </pre>
+</div>
