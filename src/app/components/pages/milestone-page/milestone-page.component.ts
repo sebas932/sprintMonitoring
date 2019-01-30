@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { GithubService } from './../../../services/github.service';
 
 @Component({
@@ -9,10 +9,13 @@ import { GithubService } from './../../../services/github.service';
 })
 export class MilestonePageComponent implements OnInit {
 
-  milestone:any = [];
+  milestone:any;
   milestoneID:number;
+  issues:any = [];
   org:string;
   repo:string;
+
+  loading:boolean;
 
   constructor(  private _githubService: GithubService,
                 private activatedRoute: ActivatedRoute
@@ -24,19 +27,33 @@ export class MilestonePageComponent implements OnInit {
       this.repo = params.repo;
       this.milestoneID = params.milestoneID;
     });
+
+    // Loading
+    this.loading = true;
+
+    this.getMilestoneInfo();
+
+
   }
 
   ngOnInit() {
-    this.getMilestoneInfo();
   }
 
   // Functions
   getMilestoneInfo() {
     this._githubService.getMilestoneByID(this.milestoneID, this.org, this.repo).subscribe((data: {}) => {
       this.milestone = data;
+      //console.log(data);
+      this.getMilestonIssues();
     });
+  }
 
-
+  getMilestonIssues() {
+    this._githubService.getIssuesByMilestoneID(this.milestoneID, this.org, this.repo).subscribe((data: {}) => {
+      this.issues = data;
+      console.log(data[0]);
+      this.loading = false;
+    });
   }
 
 }

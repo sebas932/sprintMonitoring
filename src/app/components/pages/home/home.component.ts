@@ -45,13 +45,13 @@ export class HomeComponent implements OnInit {
   getMilestones() {
     this._githubService.getMilestones('open', this.org, this.repo).subscribe((data: {}) => {
       this.openMilestones = data;
-      this.loading = false;
+
+      this._githubService.getMilestones('closed', this.org, this.repo).subscribe((data: {}) => {
+        this.closedMilestones = data;
+        this.loading = false;
+      });
     });
 
-    this._githubService.getMilestones('closed', this.org, this.repo).subscribe((data: {}) => {
-      this.closedMilestones = data;
-      this.loading = false;
-    });
   }
 
 

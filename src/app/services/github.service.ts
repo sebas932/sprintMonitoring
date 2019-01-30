@@ -44,4 +44,12 @@ export class GithubService {
       map(this.extractData));
   }
 
+  getIssuesByMilestoneID(milestoneID:number, org:string, repo:string){
+    // $query = $repoURL.'/issues?state='.$state.'&page='.$page.'&per_page='.$perPage.'&milestone='.$milestoneID;
+    let per_page = 100;
+    let queryString = `${org}/${repo}/issues?milestone=${milestoneID}&state=all&per_page=${per_page}`;
+    return this.getQuery(queryString).pipe(
+      map(this.extractData));
+  }
+
 }
