@@ -5,12 +5,13 @@ import { map, catchError, tap } from 'rxjs/operators';
 import { CONFIG } from '../config/config';
 
 
-const endpoint = 'http://192.168.1.53/issuesRoadmap/public/api';
+const endpoint = 'http://host.local/issuesRoadmap/public/api';
 
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'application/json'
+    'Content-Type':  'application/json',
+    'Access-Control-Allow-Origin': '*'
   })
 };
 
