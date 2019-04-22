@@ -46,15 +46,15 @@ export class MilestonePageComponent implements OnInit {
 
   // Functions
   getMilestoneInfo() {
-    this._sprintService.getSprintInfo(this.milestoneID, this.org, this.repo).subscribe((data: {}) => {
-      this.sprint = data;
+    this._sprintService.getSprintInfo(this.milestoneID, this.org, this.repo).subscribe((data: any) => {
+      this.sprint = data.result;
+      this.loading = false;
     });
   }
 
   getMilestonIssues() {
     this._githubService.getIssuesByMilestoneID(this.milestoneID, this.org, this.repo).subscribe((data: {}) => {
       this.issues = data;
-      console.log(data[0]);
       this.loading = false;
     });
   }
