@@ -14,9 +14,7 @@ export class MilestonePageComponent implements OnInit {
   issues:any = [];
   tickets:any = [];
   repository:any = [];
-
   milestoneID:number;
-  issues:any = [];
   org:string;
   repo:string;
 
