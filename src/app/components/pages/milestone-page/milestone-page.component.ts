@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GithubService } from './../../../services/github.service';
+import { SprintService } from './../../../services/sprint.service';
 
 @Component({
   selector: 'app-milestone-page',
@@ -9,12 +10,16 @@ import { GithubService } from './../../../services/github.service';
 })
 export class MilestonePageComponent implements OnInit {
 
-  milestone:any = [];
+  sprint:any = [];
+  issues:any = [];
+  tickets:any = [];
+  repository:any = [];
   milestoneID:number;
   org:string;
   repo:string;
 
   constructor(  private _githubService: GithubService,
+                private _sprintService:  SprintService,
                 private activatedRoute: ActivatedRoute
   ) {
     // Parameters
@@ -23,6 +28,7 @@ export class MilestonePageComponent implements OnInit {
       this.org = params.org;
       this.repo = params.repo;
       this.milestoneID = params.milestoneID;
+
     });
   }
 
@@ -32,8 +38,8 @@ export class MilestonePageComponent implements OnInit {
 
   // Functions
   getMilestoneInfo() {
-    this._githubService.getMilestoneByID(this.milestoneID, this.org, this.repo).subscribe((data: {}) => {
-      this.milestone = data;
+    this._sprintService.getSprintInfo(this.milestoneID, this.org, this.repo).subscribe((data: {}) => {
+      this.sprint = data;
     });
 
 
