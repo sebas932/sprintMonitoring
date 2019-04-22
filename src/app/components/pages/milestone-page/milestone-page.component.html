@@ -1,10 +1,36 @@
+<app-loading *ngIf="loading"></app-loading>
+
 <div class="section">
   <a routerLink="/{{org}}/{{repo}}" class="waves-effect waves-light btn-small"><i class="material-icons left">arrow_back</i>Go back</a>
 </div>
 
 <div class="section">
+<<<<<<< HEAD
   <h4> {{ sprint.title }}</h4>
   <pre>
     {{ sprint | json }}
   </pre>
+=======
+  <h4> {{ milestone?.title  }}</h4>
+</div>
+
+<div class="section">
+  <h4> Issues ({{ issues.length }})</h4>
+  <table class="responsive-table striped highlight">
+    <thead>
+      <tr>
+          <th>Issue</th>
+          <th>Assigne</th>
+          <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let issue of issues">
+        <td> <a href="{{ issue.html_url }}"> #{{ issue.number }}</a> - {{ issue.title }}  </td>
+        <td> {{ issue.assignee.login }} </td>
+        <td> {{ issue.state }} </td>
+      </tr>
+    </tbody>
+  </table>
+>>>>>>> 05f1c9ef87ff55c6afc30d920a8f6814aaebb761
 </div>
