@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GithubService } from './../../../services/github.service';
+import { SprintService } from './../../../services/sprint.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 
@@ -16,7 +16,8 @@ export class HomeComponent implements OnInit {
   repo:string;
   loading:boolean;
 
-  constructor(  private _githubService: GithubService,
+  constructor(
+                private _sprintService: SprintService,
                 private activatedRoute: ActivatedRoute,
                 private router: Router
               ) {
@@ -43,15 +44,15 @@ export class HomeComponent implements OnInit {
 
   // Functions
   getMilestones() {
-    this._githubService.getMilestones('open', this.org, this.repo).subscribe((data: {}) => {
+    this._sprintService.getSprints('open', this.org, this.repo).subscribe((data: {}) => {
       this.openMilestones = data;
-
-      this._githubService.getMilestones('closed', this.org, this.repo).subscribe((data: {}) => {
-        this.closedMilestones = data;
-        this.loading = false;
-      });
+      this.loading = false;
     });
 
+    this._sprintService.getSprints('closed', this.org, this.repo).subscribe((data: {}) => {
+      this.closedMilestones = data;
+      this.loading = false;
+    });
   }
 
 

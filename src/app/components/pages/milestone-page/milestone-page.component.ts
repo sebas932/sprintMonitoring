@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { GithubService } from './../../../services/github.service';
 import { SprintService } from './../../../services/sprint.service';
 
 @Component({
@@ -19,8 +18,10 @@ export class MilestonePageComponent implements OnInit {
   repo:string;
 
   loading:boolean;
+  loads:number;
+  loaded:number;
 
-  constructor(  private _githubService: GithubService,
+  constructor(
                 private _sprintService:  SprintService,
                 private activatedRoute: ActivatedRoute
   ) {
@@ -30,33 +31,47 @@ export class MilestonePageComponent implements OnInit {
       this.org = params.org;
       this.repo = params.repo;
       this.milestoneID = params.milestoneID;
-
     });
 
     // Loading
     this.loading = true;
-
-    this.getMilestoneInfo();
-
+    this.loads = 3;
+    this.loaded = 0;
+    this.getSprintInfo();
+    this.getSprintIssues();
+    this.getSprintTickets();
 
   }
 
   ngOnInit() {
   }
 
-  // Functions
-  getMilestoneInfo() {
+  getSprintInfo() {
     this._sprintService.getSprintInfo(this.milestoneID, this.org, this.repo).subscribe((data: any) => {
       this.sprint = data.result;
-      this.loading = false;
+      this.checkItemsLoading();
     });
   }
 
-  getMilestonIssues() {
-    this._githubService.getIssuesByMilestoneID(this.milestoneID, this.org, this.repo).subscribe((data: {}) => {
-      this.issues = data;
-      this.loading = false;
+  getSprintIssues() {
+    this._sprintService.getIssuesBySprint(this.milestoneID, this.org, this.repo).subscribe((data: any) => {
+      this.issues = data.result;
+      this.checkItemsLoading();
     });
+  }
+
+  getSprintTickets() {
+    this._sprintService.getTicketsBySprint(this.milestoneID, this.org, this.repo).subscribe((data: any) => {
+      this.tickets = data.result;
+      this.checkItemsLoading();
+    });
+  }
+
+  checkItemsLoading(){
+    this.loaded++;
+    if(this.loaded >= this.loads){
+      this.loading = false;
+    }
   }
 
 }

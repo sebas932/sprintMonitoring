@@ -19,6 +19,9 @@ const httpOptions = {
 })
 export class SprintService {
 
+  organization:string;
+  repository:string;
+
   private extractData(res: Response) {
     let body = res;
     return body || { };
@@ -28,14 +31,29 @@ export class SprintService {
     console.log('Sprint Service ...');
   }
 
-  getSprintInfo(milestoneID:number, org:string, repo:string){
-    return this.getQuery(org + '/' + repo +'/sprint/'+ milestoneID).pipe(
+  getSprintInfo(id:number, org:string, repo:string){
+    return this.getQuery(org + '/' + repo +'/sprint/'+ id).pipe(
+      map(this.extractData));
+  }
+
+  getIssuesBySprint(id:number, org:string, repo:string){
+    return this.getQuery(org + '/' + repo +'/sprint/'+ id +'/issues').pipe(
+      map(this.extractData));
+  }
+
+  getTicketsBySprint(id:number, org:string, repo:string){
+    return this.getQuery(org + '/' + repo +'/sprint/'+ id +'/tickets').pipe(
+      map(this.extractData));
+  }
+
+
+  getSprints(state:string= 'all', org:string, repo:string): Observable<any> {
+    return this.getQuery(org + '/' + repo +'/sprints?state=' +state ).pipe(
       map(this.extractData));
   }
 
   getQuery(query:string){
     let endQuery = endpoint + '/' + query;
-    console.log(endQuery);
     return this.http.get(endQuery, httpOptions);
   }
 }
