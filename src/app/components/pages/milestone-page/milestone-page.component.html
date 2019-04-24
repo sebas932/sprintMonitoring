@@ -5,21 +5,20 @@
 </div>
 
 <div class="section">
+  <h4>{{ sprint?.title }}</h4>
+  <h6><strong> Start Date:</strong> {{ sprint?.dates.start_date | date}}  | <strong>End Date:</strong>  {{ sprint?.dates.end_date | date}}</h6>
   <div class="milestoneDescription card-panel topIndicator">
     <div class="buttonsMilestone right">
       <a class="btn-floating btn-small  " href="{{ sprint?.repository.html_url }}/milestones/{{ sprint?.number }}/edit" target="_blank">
         <i class="material-icons">edit</i>
       </a>
     </div>
-    <h5>{{ sprint?.title }}</h5>
-    <p><strong> Start Date:</strong> {{ sprint?.dates.start_date | date}}  | <strong>End Date:</strong>  {{ sprint?.dates.end_date | date}}</p>
-    <hr>
-    <p> {{ sprint?.description }} </p>
+    <p [innerHTML]="sprint?.description | nl2br"></p>
   </div>
 </div>
 
 <div class="section">
-  <h4> Tickets ({{ tickets.length }})</h4>
+  <h5> Tickets ({{ tickets.length }})</h5>
   <table id="issuesList" class="table table-striped table-bordered" style="width:100%">
     <thead>
       <tr>
@@ -49,7 +48,7 @@
 </div>
 
 <div class="section">
-  <h4> Issues ({{ issues.length }})</h4>
+  <h5> Issues ({{ issues.length }})</h5>
   <table id="issuesList" class="table table-striped table-bordered striped" style="width:100%">
     <thead>
       <tr>

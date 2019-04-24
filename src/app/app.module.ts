@@ -5,6 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import {Nl2BrPipeModule} from 'nl2br-pipe';
+
 // Services
 // import { GithubService } from './services/github.service';
 
@@ -33,7 +35,8 @@ import { MilestonePageComponent } from './components/pages/milestone-page/milest
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    Nl2BrPipeModule
   ],
   providers: [
   ],
