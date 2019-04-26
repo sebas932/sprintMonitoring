@@ -6,7 +6,7 @@ import { PageNotFoundComponent } from './components/pages/page-not-found/page-no
 
 const routes: Routes = [
   { path: ':org/:repo',   component: HomeComponent },
-  { path: ':org/:repo/:milestoneID',   component: MilestonePageComponent },
+  { path: ':org/:repo/sprint/:milestoneID',   component: MilestonePageComponent },
   { path: '',   redirectTo: '/CCAFS/MARLO', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
