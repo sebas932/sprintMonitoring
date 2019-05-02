@@ -9,6 +9,7 @@ import {Nl2BrPipeModule} from 'nl2br-pipe';
 
 // Services
 // import { GithubService } from './services/github.service';
+import { AuthService } from './services/auth.service';
 
 //Components
 import { HeaderComponent } from './components/shared/header/header.component';
@@ -20,6 +21,7 @@ import { PageNotFoundComponent } from './components/pages/page-not-found/page-no
 import { MilestoneCardComponent } from './components/shared/milestone-card/milestone-card.component';
 import { LoadingComponent } from './components/shared/loading/loading.component';
 import { MilestonePageComponent } from './components/pages/milestone-page/milestone-page.component';
+import { ProfilePageComponent } from './components/pages/profile-page/profile-page.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { MilestonePageComponent } from './components/pages/milestone-page/milest
     PageNotFoundComponent,
     MilestoneCardComponent,
     LoadingComponent,
-    MilestonePageComponent
+    MilestonePageComponent,
+    ProfilePageComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +42,7 @@ import { MilestonePageComponent } from './components/pages/milestone-page/milest
     Nl2BrPipeModule
   ],
   providers: [
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

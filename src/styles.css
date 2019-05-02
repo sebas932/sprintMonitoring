@@ -113,8 +113,9 @@ table#issuesList {
 }
 
 /** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
-nav {
-  background-color: #2196F3;
+header nav {
+  background-color: #009688;
+  padding: 6px 0;
 }
 
 .form-group {
@@ -130,10 +131,7 @@ footer.page-footer {
 }
 
 header {
-  background-color: #009688;
-  padding: 6px 0;
-  margin: 0;
-  color: #fff;
+
 }
 
 .chart-container {
