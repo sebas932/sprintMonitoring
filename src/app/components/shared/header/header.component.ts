@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { AuthService } from './../../../services/auth.service';
 
 
@@ -10,19 +9,13 @@ import { AuthService } from './../../../services/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  public isLogged:boolean;
+  profile: any;
 
   constructor( public auth:AuthService ) {
     auth.handleAuthentication();
-
-    //console.log("isLogged: ", auth.isAuthenticated());
-    this.isLogged = auth.isAuthenticated();
   }
 
   ngOnInit() {
-    if (this.auth.isAuthenticated()) {
-      this.auth.renewTokens();
-    }
   }
 
   login(){

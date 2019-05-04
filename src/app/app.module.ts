@@ -22,6 +22,7 @@ import { MilestoneCardComponent } from './components/shared/milestone-card/miles
 import { LoadingComponent } from './components/shared/loading/loading.component';
 import { MilestonePageComponent } from './components/pages/milestone-page/milestone-page.component';
 import { ProfilePageComponent } from './components/pages/profile-page/profile-page.component';
+import { RepoPageComponent } from './components/pages/repo-page/repo-page.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ProfilePageComponent } from './components/pages/profile-page/profile-pa
     MilestoneCardComponent,
     LoadingComponent,
     MilestonePageComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    RepoPageComponent
   ],
   imports: [
     BrowserModule,

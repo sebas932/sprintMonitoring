@@ -41,9 +41,9 @@ export class AuthService {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.localLogin(authResult);
-        this.router.navigate(['profile']);
+        this.router.navigate(['/home']);
       } else if (err) {
-        this.router.navigate(['']);
+        this.router.navigate(['/home']);
         console.log(err);
         alert(`Error: ${err.error}. Check the console for further details.`);
       }
@@ -83,7 +83,8 @@ export class AuthService {
   public isAuthenticated(): boolean {
     // Check whether the current time is past the
     // access token's expiry time
-    return this._accessToken && Date.now() < this._expiresAt;
+    let isAuth = this._accessToken && Date.now() < this._expiresAt;
+    return isAuth;
   }
 
   public getProfile(cb): void {
