@@ -12,6 +12,7 @@ header {
 
 table td {
   border: 1px solid #f0f0f0;
+  padding: 4px;
 }
 
 table#issuesList {
@@ -118,6 +119,11 @@ table#issuesList {
 
 .milestoneDescription {
   overflow: auto;
+  height: 300px;
+  background: #fff;
+  border: 1px solid #eaeaea;
+  border-radius: 3px;
+  padding: 5px 16px;
 }
 
 .topIndicatorBig {

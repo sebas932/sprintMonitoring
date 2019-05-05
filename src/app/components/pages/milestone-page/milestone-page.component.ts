@@ -44,6 +44,7 @@ export class MilestonePageComponent implements OnInit {
   }
 
   ngOnInit() {
+    
   }
 
   getSprintInfo() {

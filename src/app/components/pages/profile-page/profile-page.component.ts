@@ -20,7 +20,7 @@ export class ProfilePageComponent implements OnInit {
     } else {
       this.auth.getProfile((err, profile) => {
         console.log("Error:"+ err);
-        this.profile = profile;
+        this.profile = profile; 
       });
     }
   }

@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getUserProfile();
   }
 
   login(){
@@ -24,6 +25,19 @@ export class HeaderComponent implements OnInit {
 
   logout(){
     this.auth.logout();
+  }
+
+  getUserProfile(){
+    if(this.auth.isAuthenticated){
+      if (this.auth.userProfile) {
+        this.profile = this.auth.userProfile;
+      } else {
+        this.auth.getProfile((err, profile) => {
+          console.log("Error:"+ err);
+          this.profile = profile;
+        });
+      }
+    }
   }
 
 }
