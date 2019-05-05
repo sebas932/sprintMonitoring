@@ -14,24 +14,36 @@
             </span>
           </div>
         </div>
+
         <div class="row">
-          <form class="col s12">
+          <form (ngSubmit)="saveUser()" #userForm="ngForm" class="col s12">
             <div class="row">
               <div class="input-field col s6">
-                <input id="first_name" type="text" name="given_name" [(ngModel)]="profile.given_name">
+                <input id="first_name" type="text" name="given_name" [(ngModel)]="profile.given_name" required>
                 <label for="first_name">First Name</label>
               </div>
               <div class="input-field col s6">
-                <input id="last_name" type="text" name="family_name" [(ngModel)]="profile.family_name">
+                <input id="last_name" type="text" name="family_name" [(ngModel)]="profile.family_name" required>
                 <label for="last_name">Last Name</label>
               </div>
             </div>
             <div class="row">
               <div class="input-field col s12">
-                <input id="email" type="email" name="email" [(ngModel)]="profile.email">
+                <input id="email" type="email" name="email" [(ngModel)]="profile.email" required>
                 <label for="email">Email</label>
               </div>
             </div>
+
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="freshdeskID" type="text" name="freshdeskID" [(ngModel)]="profile.freshdeskID">
+                <label for="freshdeskID">Freshdesk User ID</label>
+              </div>
+            </div>
+
+            <button [disabled]="userForm.invalid" class="btn waves-effect waves-light" type="submit" >
+              Save  <i class="material-icons right">send</i>
+            </button>
           </form>
         </div>
 

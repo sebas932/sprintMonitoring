@@ -16,14 +16,14 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getUserProfile().then((data:any) =>{
-      console.log("Header: "+ data);
-      this.profile = data;
-    });
+    this.getUserProfile();
   }
 
   login(){
     this.auth.login();
+
+    this.auth.handleAuthentication();
+    this.getUserProfile();
   }
 
   logout(){
@@ -41,8 +41,10 @@ export class HeaderComponent implements OnInit {
           });
         }
       }
+    }).then((data:any) =>{
+      console.log("Header: "+ data);
+      this.profile = data;
     });
-    return promise;
   }
 
 }

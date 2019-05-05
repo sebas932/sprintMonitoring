@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './../../../services/auth.service';
+import { FirebaseService } from './../../../services/firebase.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-profile-page',
@@ -10,7 +12,9 @@ export class ProfilePageComponent implements OnInit {
 
   profile: any;
 
-  constructor(public auth: AuthService) {
+  constructor(  public auth: AuthService,
+                private _firebaseService:FirebaseService
+  ) {
 
   }
 
@@ -20,9 +24,13 @@ export class ProfilePageComponent implements OnInit {
     } else {
       this.auth.getProfile((err, profile) => {
         console.log("Error:"+ err);
-        this.profile = profile; 
+        this.profile = profile;
       });
     }
+  }
+
+  saveUser(){
+    this._firebaseService.createUser(this.profile);
   }
 
 }
