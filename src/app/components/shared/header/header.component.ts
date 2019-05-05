@@ -16,7 +16,10 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getUserProfile();
+    this.getUserProfile().then((data:any) =>{
+      console.log("Header: "+ data);
+      this.profile = data;
+    });
   }
 
   login(){
@@ -28,16 +31,18 @@ export class HeaderComponent implements OnInit {
   }
 
   getUserProfile(){
-    if(this.auth.isAuthenticated){
-      if (this.auth.userProfile) {
-        this.profile = this.auth.userProfile;
-      } else {
-        this.auth.getProfile((err, profile) => {
-          console.log("Error:"+ err);
-          this.profile = profile;
-        });
+    let promise = new Promise((resolve, r)=>{
+      if(this.auth.isAuthenticated()){
+        if (this.auth.userProfile) {
+          resolve(this.auth.userProfile);
+        } else {
+          this.auth.getProfile((err, profile) => {
+            resolve(profile);
+          });
+        }
       }
-    }
+    });
+    return promise;
   }
 
 }
