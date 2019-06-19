@@ -9,6 +9,7 @@ import { AuthService } from './../../../services/auth.service';
   styleUrls: ['./milestone-page.component.css']
 })
 export class MilestonePageComponent implements OnInit {
+  dtOptions: DataTables.Settings = {};
 
   sprint:any;
   issues:any = [];
@@ -48,6 +49,12 @@ export class MilestonePageComponent implements OnInit {
     this.getSprintInfo();
     this.getSprintTickets();
     this.getSprintIssues();
+
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      paging:   false,
+      info:     false
+    };
   }
 
   getSprintInfo() {
