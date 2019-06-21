@@ -6,8 +6,9 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import {Nl2BrPipeModule} from 'nl2br-pipe';
+import { Nl2BrPipeModule } from 'nl2br-pipe';
 import { DataTablesModule } from 'angular-datatables';
+import { ChartsModule } from 'ng2-charts';
 
 // Services
 // import { GithubService } from './services/github.service';
@@ -45,7 +46,8 @@ import { RepoPageComponent } from './components/pages/repo-page/repo-page.compon
     HttpClientModule,
     FormsModule,
     Nl2BrPipeModule,
-    DataTablesModule
+    DataTablesModule,
+    ChartsModule
   ],
   providers: [
     AuthService
