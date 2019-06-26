@@ -91,8 +91,7 @@ export class MilestonePageComponent implements OnInit {
 
       let chartData = [];
       for (let ticket of this.tickets) {
-        //console.log(ticket.type);
-        chartData[''+ticket.type+''] = (chartData[ticket.type] || 0) + 1;
+        chartData[''+ticket.type || "Not Defined" +''] = (chartData[ticket.type] || 0) + 1;
       }
       console.log(chartData);
 

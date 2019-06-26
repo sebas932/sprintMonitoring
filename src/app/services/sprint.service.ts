@@ -3,9 +3,10 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Observable, of } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 import { CONFIG } from '../config/config';
+import { environment } from '../../environments/environment';
 
 
-const endpoint = 'http://localhost/issuesRoadmap/public/api';
+const endpoint = environment.sprintService.endPoint;
 
 
 const httpOptions = {
