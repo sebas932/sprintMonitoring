@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  authCallbackURL: 'http://localhost:4200/callback',
   sprintService: {
     endPoint: "http://localhost/issuesRoadmap/public/api"
   }

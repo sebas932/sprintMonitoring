@@ -99,7 +99,6 @@ export class MilestonePageComponent implements OnInit {
       this.chartLabels = Object.keys(chartData);
       this.chartData = [ Object.values(chartData) ];
       this.chartOptions = {
-        //responsive: false,
         maintainAspectRatio: false,
         legend: {
            display: true,
