@@ -1,5 +1,5 @@
 // How to deploy
-//  ng build --prod --configuration=production --base-href https://sebas932.github.io/sprintMonitoring/
+//  ng build --prod --configuration=production --base-href http://sprintmonitoring.guybrush.info/
 //  ngh --dir dist/sprintMonitoring
 
 
