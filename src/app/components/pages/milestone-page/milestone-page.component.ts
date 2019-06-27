@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SprintService } from './../../../services/sprint.service';
 import { AuthService } from './../../../services/auth.service';
-import { ChartOptions, ChartType } from 'chart.js';
-import { MultiDataSet, Label } from 'ng2-charts';
+
 
 @Component({
   selector: 'app-milestone-page',
@@ -24,11 +23,7 @@ export class MilestonePageComponent implements OnInit {
   issuesTick:boolean = false;
   loading:any;
 
-  // Chart
-  public chartLabels: Label[] = [ ];
-  public chartData: MultiDataSet = [ [ ] ];
-  public chartOptions: ChartOptions = {};
-  public chartType: ChartType = 'doughnut';
+
 
   constructor(
                 private _sprintService:  SprintService,
@@ -88,27 +83,6 @@ export class MilestonePageComponent implements OnInit {
   getSprintTickets() {
     this._sprintService.getTicketsBySprint(this.milestoneID, this.org, this.repo).subscribe((data: any) => {
       this.tickets = data.result;
-
-      let chartData = [];
-      for (let ticket of this.tickets) {
-        chartData[''+ticket.type || "Not Defined" +''] = (chartData[ticket.type] || 0) + 1;
-      }
-      console.log(chartData);
-
-      // Doughnut
-      this.chartLabels = Object.keys(chartData);
-      this.chartData = [ Object.values(chartData) ];
-      this.chartOptions = {
-        maintainAspectRatio: false,
-        legend: {
-           display: true,
-           position: "left",
-           labels: {
-             boxWidth: 8,
-           }
-        }
-      };
-
       this.loading.tickets= false;
     });
   }

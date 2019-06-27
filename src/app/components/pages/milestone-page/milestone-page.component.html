@@ -26,15 +26,9 @@
   </div>
 
   <div *ngIf="!loading.tickets" class="row">
-    <div class="col s6">
-      <canvas baseChart
-        [data]="chartData"
-        [labels]="chartLabels"
-        [chartType]="chartType"
-        [options]="chartOptions">
-      </canvas>
-    </div>
-    <div class="col s6"></div>
+    <div class="col s4"><app-tickets-by-type [data]="tickets" keyName="type"></app-tickets-by-type></div>
+    <div class="col s4"><app-tickets-by-type [data]="tickets" keyName="priorityName"></app-tickets-by-type></div>
+    <div class="col s4"><app-tickets-by-type [data]="tickets" keyName="statusName"></app-tickets-by-type></div>
   </div>
 
   <div class="milestoneDescription">
