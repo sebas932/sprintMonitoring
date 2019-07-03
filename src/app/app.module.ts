@@ -27,6 +27,7 @@ import { MilestonePageComponent } from './components/pages/milestone-page/milest
 import { ProfilePageComponent } from './components/pages/profile-page/profile-page.component';
 import { RepoPageComponent } from './components/pages/repo-page/repo-page.component';
 import { DoughnutChartComponent } from './components/pages/milestone-page/charts/doughnut-chart.component';
+import { BarChartComponent } from './components/pages/milestone-page/charts/bar-chart.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { DoughnutChartComponent } from './components/pages/milestone-page/charts
     MilestonePageComponent,
     ProfilePageComponent,
     RepoPageComponent,
-    DoughnutChartComponent
+    DoughnutChartComponent,
+    BarChartComponent
   ],
   imports: [
     BrowserModule,

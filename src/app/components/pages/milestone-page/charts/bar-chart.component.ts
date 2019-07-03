@@ -1,45 +1,52 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
-import { ChartOptions, ChartType } from 'chart.js';
-import { MultiDataSet, Label } from 'ng2-charts';
+import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
+import { Label } from 'ng2-charts';
 
 import { AppUtils } from './../../../../config/appUtils';
 
+
 @Component({
-  selector: 'app-doughnut-chart',
+  selector: 'app-bar-chart',
   template: `
     <div style="display: block">
       <canvas baseChart
-        [data]="this.chartData"
-        [labels]="this.chartLabels"
-        [chartType]="this.chartType"
-        [options]="this.chartOptions"
-        [colors]="this.colors"
-        >
+        [datasets]="barChartData"
+        [labels]="barChartLabels"
+        [options]="barChartOptions"
+        [plugins]="barChartPlugins"
+        [legend]="barChartLegend"
+        [chartType]="barChartType">
       </canvas>
     </div>
   `,
   styles: []
 })
-export class DoughnutChartComponent implements OnInit {
+export class BarChartComponent implements OnInit {
+
   u = new AppUtils();
 
-  public chartLabels: Label[] = [ ];
-  public colors = { };
-  public chartData: MultiDataSet = [ [ ] ];
-  public chartType: ChartType = 'doughnut';
-  public chartOptions: ChartOptions = {
-    maintainAspectRatio: false,
-    legend: {
-       display: true,
-       position: "left",
-       labels: {
-         boxWidth: 8,
-       }
+  public barChartOptions: ChartOptions = {
+    responsive: true,
+    // We use these empty structures as placeholders for dynamic theming.
+    scales: {
+        xAxes: [{
+            stacked: true
+
+        }]
     }
   };
+  public barChartLabels: Label[] = [ "No Data"];
+  public barChartType: ChartType = 'horizontalBar';
+  public barChartLegend = false;
+  public barChartPlugins = [];
+  public barChartData: ChartDataSets[] = [
+     { data: [ 0 ] }
+   ];
 
   @Input() data:any = {};
   @Input() keyName: string = "";
+
+
 
   constructor() { }
 
@@ -56,9 +63,13 @@ export class DoughnutChartComponent implements OnInit {
 
   setChartData(data){
     let chartDataObject = this.getChartData(this.keyName, data);
-    this.chartLabels = Object.keys(chartDataObject);
-    this.chartData = [ Object.values(chartDataObject) ];
-    this.colors = [ { backgroundColor: (Object.keys(chartDataObject)).map((v)=> this.u.getColor(v)) } ];
+    let labelsArray = Object.keys(chartDataObject);
+    let dataArray = Object.values(chartDataObject);
+    let backgroundColor = labelsArray.map((v)=> this.u.getColor(v) );
+    this.barChartLabels = labelsArray;
+    this.barChartData = [
+      { data: dataArray, backgroundColor: backgroundColor, hoverBackgroundColor: backgroundColor  }
+    ];
   }
 
   getChartData (keyName, dataArray){
@@ -79,5 +90,7 @@ export class DoughnutChartComponent implements OnInit {
     }
     return chartDataObject;
   }
+
+
 
 }

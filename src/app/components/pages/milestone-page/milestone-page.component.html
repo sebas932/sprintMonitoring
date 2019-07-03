@@ -26,12 +26,12 @@
   </div>
 
   <div *ngIf="!loading.tickets" class="row">
-    <div class="col s4"><app-doughnut-chart [data]="tickets" keyName="type"></app-doughnut-chart></div>
-    <div class="col s4"><app-doughnut-chart [data]="tickets" keyName="priorityName"></app-doughnut-chart></div>
     <div class="col s4"><app-doughnut-chart [data]="tickets" keyName="statusName"></app-doughnut-chart></div>
+    <div class="col s4"><app-doughnut-chart [data]="tickets" keyName="type"></app-doughnut-chart></div>
+    <div class="col s4"><app-bar-chart [data]="tickets" keyName="priorityName"></app-bar-chart></div>
   </div>
 
-  <div class="milestoneDescription">
+  <div class="tableBlock">
     <table *ngIf="!loading.tickets" id="issuesList" class="table table-striped table-bordered striped" style="width:100%">
       <thead>
         <tr>
@@ -70,12 +70,12 @@
   <h5> Issues ({{ issues.length }}) </h5>
 
   <div *ngIf="!loading.issues" class="row">
-    <div class="col s4"><app-doughnut-chart [data]="issues" keyName="type"></app-doughnut-chart></div>
-    <div class="col s4"><app-doughnut-chart [data]="issues" keyName="isNew"></app-doughnut-chart></div>
     <div class="col s4"><app-doughnut-chart [data]="issues" keyName="zenhub.pipeline.name"></app-doughnut-chart></div>
+    <div class="col s4"><app-doughnut-chart [data]="issues" keyName="type"></app-doughnut-chart></div>
+    <div class="col s4"><app-bar-chart [data]="issues" keyName="priority" ></app-bar-chart></div>
   </div>
 
-  <div class="milestoneDescription">
+  <div class="tableBlock">
     <table *ngIf="!loading.issues" id="issuesList" class="table table-striped table-bordered striped" style="width:100%">
       <thead>
         <tr>

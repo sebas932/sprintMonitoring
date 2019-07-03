@@ -126,6 +126,15 @@ table#issuesList {
   padding: 5px 16px;
 }
 
+.tableBlock{
+  overflow: auto;
+  height: 600px;
+  background: #fff;
+  border: 1px solid #eaeaea;
+  border-radius: 3px;
+  padding: 5px 16px;
+}
+
 .topIndicatorBig {
   height: 350px;
 }
