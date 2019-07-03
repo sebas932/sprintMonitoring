@@ -3,7 +3,7 @@ import { ChartOptions, ChartType } from 'chart.js';
 import { MultiDataSet, Label } from 'ng2-charts';
 
 @Component({
-  selector: 'app-tickets-by-type',
+  selector: 'app-doughnut-chart',
   template: `
     <div style="display: block">
       <canvas baseChart
@@ -16,8 +16,8 @@ import { MultiDataSet, Label } from 'ng2-charts';
   `,
   styles: []
 })
-export class TicketsByTypeComponent implements OnInit {
-  // Chart
+export class DoughnutChartComponent implements OnInit {
+
   public chartLabels: Label[] = [ ];
   public chartData: MultiDataSet = [ [ ] ];
   public chartType: ChartType = 'doughnut';
@@ -40,12 +40,23 @@ export class TicketsByTypeComponent implements OnInit {
   ngOnInit() {
 
     let chartDataObject = [];
+    let keyNameArray: string[] = this.keyName.split('.');
+
+
     for (let ticket of this.data) {
-      console.log(ticket);
-      let key = ticket[this.keyName] || "Not Defined";
-      let value = chartDataObject[key] || 0;
+      let keyValue:any = {};
+      let counter:number;
+
+      keyValue = ticket[keyNameArray[0]] || "Not Defined";
+      if(keyNameArray.length > 0){
+        for (let i = 1; i < keyNameArray.length; i++) {
+          keyValue = keyValue[keyNameArray[i]]  || "Not Defined";
+        }
+      }
+
+      counter = chartDataObject[keyValue] || 0;
       // Count
-      chartDataObject[key] = value + 1;
+      chartDataObject[keyValue] = counter + 1;
     }
 
     this.chartLabels = Object.keys(chartDataObject);

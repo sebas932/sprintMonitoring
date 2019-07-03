@@ -26,7 +26,7 @@ import { LoadingComponent } from './components/shared/loading/loading.component'
 import { MilestonePageComponent } from './components/pages/milestone-page/milestone-page.component';
 import { ProfilePageComponent } from './components/pages/profile-page/profile-page.component';
 import { RepoPageComponent } from './components/pages/repo-page/repo-page.component';
-import { TicketsByTypeComponent } from './components/pages/milestone-page/charts/tickets-by-type.component';
+import { DoughnutChartComponent } from './components/pages/milestone-page/charts/doughnut-chart.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +40,7 @@ import { TicketsByTypeComponent } from './components/pages/milestone-page/charts
     MilestonePageComponent,
     ProfilePageComponent,
     RepoPageComponent,
-    TicketsByTypeComponent
+    DoughnutChartComponent
   ],
   imports: [
     BrowserModule,
