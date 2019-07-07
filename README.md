@@ -1,6 +1,8 @@
 # SprintMonitoring
+<img style="text-align: center;" src="https://repository-images.githubusercontent.com/164037659/c36e2000-9721-11e9-9c48-fefb5ac7114e">
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.4.
+
 
 ## Development server
 
