@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SprintService } from './../../../services/sprint.service';
 
 
 @Component({
@@ -9,7 +10,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(  private activatedRoute: ActivatedRoute,
+  public repos:any[] = [];
+
+  constructor(  private _sprintService: SprintService,
+                private activatedRoute: ActivatedRoute,
                 private router: Router ) {
 
     // Parameters
@@ -20,6 +24,21 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this._sprintService.getRepoInfo('CCAFS', 'MARLO').subscribe((data: {}) => {
+      this.repos.push(data);
+    });
+
+    this._sprintService.getRepoInfo('google', 'material-design-lite').subscribe((data: {}) => {
+      this.repos.push(data);
+    });
+
+    this._sprintService.getRepoInfo('pure-css', 'pure').subscribe((data: {}) => {
+      this.repos.push(data);
+    });
+
+
+
   }
 
 

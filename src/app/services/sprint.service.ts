@@ -32,6 +32,11 @@ export class SprintService {
     console.log('Sprint Service ...');
   }
 
+  getRepoInfo(org:string, repo:string){
+    return this.getQuery(org + '/' + repo +'/repo').pipe(
+      map(this.extractData));
+  }
+
   getSprintInfo(id:number, org:string, repo:string){
     return this.getQuery(org + '/' + repo +'/sprint/'+ id).pipe(
       map(this.extractData));

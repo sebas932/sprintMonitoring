@@ -1,8 +1,13 @@
 
 <section>
-  <h4> Home Page </h4>
+  <h4>Repositories </h4>
 
   <ul class="collection">
-    <a [routerLink]="[ 'CCAFS', 'MARLO' ]" class="collection-item">CCAFS/MARLO</a>
+    <li class="collection-item avatar" *ngFor="let repo of repos">
+        <img src="{{ repo.owner.avatar_url }}" alt="" class="circle">
+        <span class="title">{{ repo.full_name }} </span>
+        <p> {{ repo.description }}</p>
+        <a [routerLink]="[ repo.owner.login, repo.name ]" class="secondary-content"><i class="medium material-icons">keyboard_arrow_right</i></a>
+    </li>
   </ul>
 </section>
