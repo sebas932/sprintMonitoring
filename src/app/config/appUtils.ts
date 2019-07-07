@@ -33,4 +33,28 @@ export class AppUtils {
       return i>5 ? null : a[Math.floor(Math.random()*16)] }
     ).join('');
   }
+
+  public getChartData (dataArray, keyName, keyValue){
+    let chartDataObject = [];
+    for (let item of dataArray) {
+      let keyNameResult:any =  this.getDataObjectValueByString(item, keyName) || "Not Defined";
+      let keyValueResult:any = this.getDataObjectValueByString(item, keyValue) || 1;
+      let counter:number = chartDataObject[keyNameResult] || 0;
+      // Count
+      chartDataObject[keyNameResult] = counter + keyValueResult;
+    }
+    return chartDataObject;
+  }
+
+  public getDataObjectValueByString(object, string){
+    let stringArr: string[] = string.split('.');
+    let result:any = {};
+    result = object[stringArr[0]];
+    if(stringArr.length > 0){
+      for (let i = 1; i < stringArr.length; i++) {
+        result = result[stringArr[i]];
+      }
+    }
+    return result;
+  }
 }

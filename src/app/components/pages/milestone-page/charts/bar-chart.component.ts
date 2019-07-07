@@ -25,6 +25,11 @@ export class BarChartComponent implements OnInit {
 
   u = new AppUtils();
 
+  @Input() data:any = {};
+  @Input() keyName: string = "";
+  @Input() keyValue: string = "";
+  @Input() title: string = "";
+
   public barChartOptions: ChartOptions = {
     responsive: true,
     // We use these empty structures as placeholders for dynamic theming.
@@ -43,11 +48,6 @@ export class BarChartComponent implements OnInit {
      { data: [ 0 ] }
    ];
 
-  @Input() data:any = {};
-  @Input() keyName: string = "";
-
-
-
   constructor() { }
 
   ngOnInit() {
@@ -62,7 +62,7 @@ export class BarChartComponent implements OnInit {
   }
 
   setChartData(data){
-    let chartDataObject = this.getChartData(this.keyName, data);
+    let chartDataObject = this.u.getChartData(data, this.keyName, this.keyValue);
     let labelsArray = Object.keys(chartDataObject);
     let dataArray = Object.values(chartDataObject);
     let backgroundColor = labelsArray.map((v)=> this.u.getColor(v) );
@@ -71,26 +71,6 @@ export class BarChartComponent implements OnInit {
       { data: dataArray, backgroundColor: backgroundColor, hoverBackgroundColor: backgroundColor  }
     ];
   }
-
-  getChartData (keyName, dataArray){
-    let chartDataObject = [];
-    let keyNameArray: string[] = keyName.split('.');
-    for (let item of dataArray) {
-      let keyValue:any = {};
-      let counter:number;
-      keyValue = item[keyNameArray[0]] || "Not Defined";
-      if(keyNameArray.length > 0){
-        for (let i = 1; i < keyNameArray.length; i++) {
-          keyValue = keyValue[keyNameArray[i]]  || "Not Defined";
-        }
-      }
-      counter = chartDataObject[keyValue] || 0;
-      // Count
-      chartDataObject[keyValue] = counter + 1;
-    }
-    return chartDataObject;
-  }
-
 
 
 }

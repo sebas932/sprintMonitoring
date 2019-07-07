@@ -22,6 +22,7 @@ export class MilestonePageComponent implements OnInit {
   repo:string;
   issuesTick:boolean = false;
   loading:any;
+  dtOptions: DataTables.Settings = {};
 
 
 
@@ -50,6 +51,11 @@ export class MilestonePageComponent implements OnInit {
     this.getSprintInfo();
     this.getSprintTickets();
     this.getSprintIssues();
+
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      paging: false
+    };
 
   }
 
