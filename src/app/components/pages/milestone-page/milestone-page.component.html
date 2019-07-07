@@ -19,7 +19,11 @@
 </div>
 
 <div class="section">
-  <h5> Tickets ({{ tickets.length }})  </h5>
+  <h4>  Tickets ({{ tickets.length }})
+    <div class="right">
+      <img width="30" src="/assets/images/freshdesk-icon-50.png" alt="">
+    </div>
+  </h4>
 
   <div style="display: block">
 
@@ -67,7 +71,11 @@
     <input (click)="changeIssuesList()"  type="checkbox" class="filled-in" name="issuesTick" [checked]="issuesTick"/>
     <span> Show My Issues Only </span>
   </label>
-  <h5> Issues ({{ issues.length }}) </h5>
+  <h4>  Issues ({{ issues.length }})
+    <div class="right">
+    <img width="30" src="/assets/images/github-icon-50.png" alt=""> <i class="material-icons">add</i> <img width="30" src="/assets/images/zenhub-icon-50.png" alt="">
+    </div>
+  </h4>
 
   <div *ngIf="!loading.issues" class="row">
     <div class="col s4"><app-doughnut-chart [data]="issues" keyName="zenhub.pipeline.name" keyValue="zenhub.estimate.value"></app-doughnut-chart></div>
