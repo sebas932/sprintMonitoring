@@ -7,6 +7,15 @@ export const environment = {
   authCallbackURL: 'http://localhost:4200/callback',
   sprintService: {
     endPoint: "http://localhost/issuesRoadmap/public/api"
+  },
+  firebase: {
+    apiKey: "AIzaSyAa_ShKOOOQ8TMhyxp8talK-48QF7hm17M",
+    authDomain: "angularsprintmonitoring.firebaseapp.com",
+    databaseURL: "https://angularsprintmonitoring.firebaseio.com",
+    projectId: "angularsprintmonitoring",
+    storageBucket: "angularsprintmonitoring.appspot.com",
+    messagingSenderId: "524211133953",
+    appId: "1:524211133953:web:99435f58293a1848"
   }
 };
 

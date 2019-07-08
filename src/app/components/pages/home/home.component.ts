@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 import { SprintService } from './../../../services/sprint.service';
 
 
@@ -17,7 +19,11 @@ export class HomeComponent implements OnInit {
     { org: 'pure-css', repo: 'pure'},
     { org: 'angular', repo: 'angularfire2'}
   ];
-  constructor(  private _sprintService: SprintService,
+
+  private itemsCollection: AngularFirestoreCollection<any>;
+
+  constructor(  private db: AngularFirestore,
+                private _sprintService: SprintService,
                 private activatedRoute: ActivatedRoute,
                 private router: Router ) {
 
@@ -26,14 +32,21 @@ export class HomeComponent implements OnInit {
       //console.log(params);
     });
 
+    //Firebase test
+    this.itemsCollection = db.collection<any>('repos');
+    this.itemsCollection.valueChanges().subscribe( (items:any[])=> {
+      console.log(items);
+      for (let item of items) {
+        this._sprintService.getRepoInfo(item.org, item.repo).subscribe((data: {}) => {
+          this.repos.push(data);
+        });
+      }
+    });
+
   }
 
   ngOnInit() {
-    for (let item of this.reposArray) {
-      this._sprintService.getRepoInfo(item.org, item.repo).subscribe((data: {}) => {
-        this.repos.push(data);
-      });
-    }
+
 
   }
 

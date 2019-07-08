@@ -10,4 +10,11 @@
         <a [routerLink]="[ repo.owner.login, repo.name ]" class="secondary-content"><i class="medium material-icons">keyboard_arrow_right</i></a>
     </li>
   </ul>
+
+
+  <ul>
+    <li class="text" *ngFor="let item of items | async">
+      {{item.org}}/{{item.repo}}
+    </li>
+  </ul>
 </section>
