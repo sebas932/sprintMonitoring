@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   authCallbackURL: 'http://localhost:4200/callback',
   sprintService: {
-    endPoint: "http://localhost/issuesRoadmap/public/api"
+    endPoint: "http://api.guybrush.info/api"
   },
   firebase: {
     apiKey: "AIzaSyAa_ShKOOOQ8TMhyxp8talK-48QF7hm17M",

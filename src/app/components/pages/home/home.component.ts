@@ -14,10 +14,7 @@ export class HomeComponent implements OnInit {
 
   public repos:any[] = [];
   public reposArray:any[] = [
-    { org: 'CCAFS', repo: 'MARLO'},
-    { org: 'google', repo: 'material-design-lite'},
-    { org: 'pure-css', repo: 'pure'},
-    { org: 'angular', repo: 'angularfire2'}
+    { org: 'CCAFS', repo: 'MARLO'}
   ];
 
   private itemsCollection: AngularFirestoreCollection<any>;
