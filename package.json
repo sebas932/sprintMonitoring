@@ -27,7 +27,7 @@
     "datatables.net": "^1.10.19",
     "datatables.net-dt": "^1.10.19",
     "firebase": "^6.2.4",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "ng2-charts": "^2.2.3",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
