@@ -24,7 +24,7 @@
     "auth0-js": "^9.10.2",
     "chart.js": "^2.8.0",
     "core-js": "^2.5.4",
-    "datatables.net": "^1.10.19",
+    "datatables.net": "^1.10.22",
     "datatables.net-dt": "^1.10.19",
     "firebase": "^6.2.4",
     "jquery": "^3.4.1",
