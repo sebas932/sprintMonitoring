@@ -22,7 +22,7 @@
     "@angular/router": "~7.1.0",
     "angular-datatables": "^8.0.0",
     "auth0-js": "^9.10.2",
-    "chart.js": "^2.8.0",
+    "chart.js": "^2.9.4",
     "core-js": "^2.5.4",
     "datatables.net": "^1.10.19",
     "datatables.net-dt": "^1.10.19",
